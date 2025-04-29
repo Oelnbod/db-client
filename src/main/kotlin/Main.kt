@@ -1,10 +1,6 @@
-import kotlinx.serialization.Serializable
-
+import api.Password
 import api.queryAPI
 import api.stringToJson
-
-@Serializable
-data class Password(val id: UInt, val website: String, val username: String, val password: String)
 
 fun main() {
     println(listAllPasswords())
@@ -17,7 +13,7 @@ fun listSomePasswords(website: String): List<Password> {
     val query = "$socketWithPrefix/$key/list_row/$website"
     val response = queryAPI(query)
     val tablePasswords = stringToJson(response)
-    return(tablePasswords)
+    return (tablePasswords)
 
 }
 
@@ -25,9 +21,8 @@ fun listSomePasswords(website: String): List<Password> {
 fun listAllPasswords(): List<Password> {
     val response = queryAPI("$socketWithPrefix/$key/list_all/")
     val tablePasswords = stringToJson(response)
-    return(tablePasswords)
+    return (tablePasswords)
 }
-
 
 
 const val socketWithPrefix: String = "http://192.168.1.120:7878"
