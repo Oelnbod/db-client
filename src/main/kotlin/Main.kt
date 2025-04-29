@@ -3,15 +3,20 @@ import api.queryAPI
 import api.stringToJson
 
 fun main() {
+    println(addPasswords("p.p","uid", "pwd"))
     println(listAllPasswords())
     println(listSomePasswords("example.com"))
 
 }
-
+fun addPasswords(website: String, username: String, password: String): String {
+    val url = "$socketWithPrefix/$key/add/$website,$username,$password/"
+    val response = queryAPI(url)
+    return(response)
+}
 //returns passwords based on a website search
 fun listSomePasswords(website: String): List<Password> {
-    val query = "$socketWithPrefix/$key/list_row/$website"
-    val response = queryAPI(query)
+    val url = "$socketWithPrefix/$key/list_row/$website"
+    val response = queryAPI(url)
     val tablePasswords = stringToJson(response)
     return (tablePasswords)
 
