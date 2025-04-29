@@ -25,12 +25,16 @@ fun listPasswords() {
             .uri(URI.create("http://192.168.1.120:7878/seckey/list_all/"))
             .build()
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
-        val json = response.body() //this is the json return from the api query
-        //decoding the json and printing it
-        // val listPasswords = Json.decodeFromString<List<Password>>(json)
-        println(listPasswords)
+        stringToJson(response.body())
+
     } catch (e: Exception) {
         System.err.println("Server has crashed ($e)")
     }
+
+}
+fun stringToJson(json: String): List<Password> {
+    //deserializing the json value
+    val listPasswords = Json.decodeFromString<List<Password>>(json)
+    return(listPasswords)
 
 }
