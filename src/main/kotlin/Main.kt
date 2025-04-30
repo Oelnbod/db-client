@@ -1,34 +1,13 @@
-import api.Password
-import api.queryAPI
-import api.stringToJson
+import api.addPasswords
+import api.deletePasswords
+import api.listAllPasswords
+import api.listSomePasswords
 
 fun main() {
-    println(addPasswords("p.p","uid", "pwd"))
+    println(addPasswords("p.p", "uid", "pwd"))
     println(listAllPasswords())
     println(listSomePasswords("example.com"))
-
-}
-fun addPasswords(website: String, username: String, password: String): String {
-    val url = "$socketWithPrefix/$key/add/$website,$username,$password/"
-    val response = queryAPI(url)
-    return(response)
-}
-//returns passwords based on a website search
-fun listSomePasswords(website: String): List<Password> {
-    val url = "$socketWithPrefix/$key/list_row/$website"
-    val response = queryAPI(url)
-    val tablePasswords = stringToJson(response)
-    return (tablePasswords)
-
+    println(deletePasswords("p.p"))
+    println(listAllPasswords())
 }
 
-//this will return all passwords in the database
-fun listAllPasswords(): List<Password> {
-    val response = queryAPI("$socketWithPrefix/$key/list_all/")
-    val tablePasswords = stringToJson(response)
-    return (tablePasswords)
-}
-
-
-const val socketWithPrefix: String = "http://192.168.1.120:7878"
-const val key: String = "seckey"
