@@ -1,45 +1,11 @@
-import api.addPasswords
-import api.deletePasswords
+import api.Password
 import api.listAllPasswords
-import api.listSomePasswords
-
 
 fun main() {
     //parsing it to independent lists by column appending at the start is to give titles to column
     val data = listAllPasswords()
-    val idList: List<String> = listOf("Index:") + (data.map { it.id.toString() })
-    val websiteList: List<String> = listOf("Website:") + data.map { it.website }
-    val usernameList: List<String> = listOf("Usernames:") + data.map { it.username }
-    val passwordList: List<String> = listOf("Passwords:") + data.map { it.password }
+    displayAsTable(data)
 
-    //merging lists together through .zip
-    val fullList = idList.zip(websiteList.zip(usernameList.zip(passwordList)))
-    //converting to an array for convenience
-    val fullArray: Array<Array<String>> = fullList.map {
-        arrayOf(it.first, it.second.first, it.second.second.first, it.second.second.second)
-    }.toTypedArray()
-
-    //identifying length so can be referenced by index
-    val lengthAll: List<Int> =
-        listOf(largest(idList), largest(websiteList), largest(usernameList), largest(passwordList))
-    for (row in fullArray) {
-        //println()
-
-        for (item in row) {
-            //getting a limit for padding from list above
-            val paddingLimit: Int = lengthAll[row.indexOf(item)]
-            //padding using limit above
-            val stringItem = padding(item, paddingLimit)
-
-            //inserting a pipe beforehand
-            print("| $stringItem  ")
-
-
-        }
-        //adding a pipe to the end of each row and a blank line
-        print("|")
-        println()
-    }
 
 
 // other commands available
@@ -75,4 +41,41 @@ fun padding(input: String, target: Int): String {
         }
     }
     return (input)
+}
+
+fun displayAsTable(data: List<Password>) {
+    val idList: List<String> = listOf("Index:") + (data.map { it.id.toString() })
+    val websiteList: List<String> = listOf("Website:") + data.map { it.website }
+    val usernameList: List<String> = listOf("Usernames:") + data.map { it.username }
+    val passwordList: List<String> = listOf("Passwords:") + data.map { it.password }
+
+    //merging lists together through .zip
+    val fullList = idList.zip(websiteList.zip(usernameList.zip(passwordList)))
+    //converting to an array for convenience
+    val fullArray: Array<Array<String>> = fullList.map {
+        arrayOf(it.first, it.second.first, it.second.second.first, it.second.second.second)
+    }.toTypedArray()
+
+    //identifying length so can be referenced by index
+    val lengthAll: List<Int> =
+        listOf(largest(idList), largest(websiteList), largest(usernameList), largest(passwordList))
+    for (row in fullArray) {
+        //println()
+
+        for (item in row) {
+            //getting a limit for padding from list above
+            val paddingLimit: Int = lengthAll[row.indexOf(item)]
+            //padding using limit above
+            val stringItem = padding(item, paddingLimit)
+
+            //inserting a pipe beforehand
+            print("| $stringItem  ")
+
+
+        }
+        //adding a pipe to the end of each row and a blank line
+        print("|")
+        println()
+    }
+
 }

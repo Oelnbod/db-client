@@ -1,4 +1,5 @@
 package api
+//this package is an abstraction layer that allows for commands to be run that generates a query and runs it.
 
 fun deletePasswords(website: String): String {
     val url = "$socketWithPrefix/$key/delete/$website"
