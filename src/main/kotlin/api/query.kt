@@ -25,7 +25,11 @@ fun queryAPI(url: String): String {
         return (response.body())
     } catch (e: Exception) {
         System.err.println(
-            "" + "-----------------------------------------------------\n" + "                        :(\n" + "Server has crashed ($e)\n" + "Please reboot the password server\n" + "-----------------------------------------------------"
+            "" + "------------------------------------------------------------------------\n" +
+                    "                        :(\n" + "Believed Error: Server has crashed ($e)\n" + "Please reboot the password server\n" +
+                    "Error details  printed below: \n " +
+
+                    "------------------------------------------------------------------------"
         )
         return ("")
     }

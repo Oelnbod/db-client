@@ -2,15 +2,15 @@ import api.addPasswords
 import api.deletePasswords
 import api.listAllPasswords
 import api.listSomePasswords
-import java.util.Arrays
+
 
 fun main() {
-    //parsing it to independent lists by column
+    //parsing it to independent lists by column appending at the start is to give titles to column
     val data = listAllPasswords()
-    val idList: List<String> = (data.map { it.id.toString() })
-    val websiteList: List<String> = data.map { it.website }
-    val usernameList: List<String> = data.map { it.username }
-    val passwordList: List<String> = data.map { it.password }
+    val idList: List<String> = listOf("Index:") + (data.map { it.id.toString() })
+    val websiteList: List<String> = listOf("Website:") + data.map { it.website }
+    val usernameList: List<String> = listOf("Usernames:") + data.map { it.username }
+    val passwordList: List<String> = listOf("Passwords:") + data.map { it.password }
 
     //merging lists together through .zip
     val fullList = idList.zip(websiteList.zip(usernameList.zip(passwordList)))
@@ -43,10 +43,10 @@ fun main() {
 
 
 // other commands available
-//    println(addPasswords("p.p", "uid", "pwd"))
-//    println(listAllPasswords())
-//    println(listSomePasswords("example.com"))
-//    println(deletePasswords("p.p"))
+//   println(addPasswords("p.p", "uid", "pwd"))
+//   println(listAllPasswords())
+//   println(listSomePasswords("example.com"))
+//   println(deletePasswords("p.p"))
 //    println(listAllPasswords())
 }
 
