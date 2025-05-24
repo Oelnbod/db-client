@@ -2,9 +2,9 @@ import api.Password
 import api.listAllPasswords
 
 fun main() {
-    //parsing it to independent lists by column appending at the start is to give titles to column
+
     val data = listAllPasswords()
-    displayAsTable(data)
+    println("Passwords: \n" + displayAsTable(data))
 
 
 
@@ -43,7 +43,9 @@ fun padding(input: String, target: Int): String {
     return (input)
 }
 
-fun displayAsTable(data: List<Password>) {
+fun displayAsTable(data: List<Password>): String {
+    var stringOut = "" //this is to allow outputting to user as a string (useful for gui change)
+    //parsing it to independent lists by column appending at the start is to give titles to column
     val idList: List<String> = listOf("Index:") + (data.map { it.id.toString() })
     val websiteList: List<String> = listOf("Website:") + data.map { it.website }
     val usernameList: List<String> = listOf("Usernames:") + data.map { it.username }
@@ -69,13 +71,14 @@ fun displayAsTable(data: List<Password>) {
             val stringItem = padding(item, paddingLimit)
 
             //inserting a pipe beforehand
-            print("| $stringItem  ")
+            stringOut = "$stringOut| $stringItem  "
 
 
         }
         //adding a pipe to the end of each row and a blank line
-        print("|")
-        println()
+        stringOut = "$stringOut| \n"
+
     }
+    return (stringOut)
 
 }
