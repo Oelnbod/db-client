@@ -6,18 +6,11 @@ import stringHandling.*
 import encrytion.*
 
 
-//https://developer.android.com/privacy-and-security/cryptography#kotlin
 fun main() {
-    val originalText = "Hello Kotlin AES Encryption!"
+
     //val secretKey = generateAESKey(256)
     //println(secretKeyToString(secretKey))
 
-    
-    val encryptedData = aesEncrypt(originalText.toByteArray(), secKey)
-    println(encryptedData)
-    val decryptedData = aesDecrypt(encryptedData, secKey)
-    val decryptedText = String(decryptedData)
-    println(decryptedText)
 
     var exit = false
     while (!exit) {
@@ -63,4 +56,3 @@ fun main() {
 }
 
 
-const val secKey: String = "+aXfDHPFRCAGXI09mpB8a5Hu7UcmeTVp"

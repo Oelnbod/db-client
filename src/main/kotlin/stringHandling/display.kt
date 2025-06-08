@@ -1,7 +1,8 @@
 package stringHandling
 
 import api.Password
-
+import encrytion.aesDecrypt
+import encrytion.secKey
 fun largest(list: List<String>): Int {
     //this works by adding to a list and then sorting, reversing and taking the first value
     val lengthsList = mutableListOf<Int>()
@@ -53,9 +54,21 @@ fun displayAsTable(data: List<Password>): String {
         for (item in row) {
             //getting a limit for padding from list above
             val paddingLimit: Int = lengthAll[row.indexOf(item)]
-            //padding using limit above
-            val stringItem = padding(item, paddingLimit)
-
+            var stringItem: String
+            if (row.indexOf(item) == 3) {
+                //this allows for decrypting passwords (as passwords are only encrypted)
+                try {
+                    val shortenedItem = item.take(item.length - 1) //removes final character (a \ is added somewhere)
+                    val decryptedData = String(aesDecrypt(shortenedItem, secKey))
+                    stringItem = padding(decryptedData, paddingLimit)
+                } catch (e: Exception) {
+                    //also catches column title
+                    stringItem = padding(item, paddingLimit)
+                }
+            } else {
+                //padding using limit above
+                stringItem = padding(item, paddingLimit)
+            }
             //inserting a pipe beforehand
             stringOut = "$stringOut| $stringItem  "
 

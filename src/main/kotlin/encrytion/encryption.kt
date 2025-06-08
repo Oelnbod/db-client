@@ -62,3 +62,4 @@ fun secretKeyToString(secretKey: SecretKey): String {
     return base64EncodedString
 }
 
+const val secKey: String = "+aXfDHPFRCAGXI09mpB8a5Hu7UcmeTVp"
