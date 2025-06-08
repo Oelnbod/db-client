@@ -27,7 +27,7 @@ fun main() {
 
 //    var exit = false
 //    while (!exit) {
-//        println("\nplease enter a number that corresponds to your preferred choice: \n 1: display all passwords \n 2: search by website \n 3: Add a password \n 4: Delete a password \n 5: Exit")
+//        println("\n please enter a number that corresponds to your preferred choice: \n 1: display all passwords \n 2: search by website \n 3: Add a password \n 4: Delete a password \n 5: Exit")
 //        val input = readLine()
 //        when (input) {
 //            "1" -> println(displayAsTable(listAllPasswords()))
