@@ -3,6 +3,9 @@ package stringHandling
 import api.Password
 import encrytion.aesDecrypt
 import encrytion.secKey
+import java.io.BufferedReader
+import java.io.File
+
 fun largest(list: List<String>): Int {
     //this works by adding to a list and then sorting, reversing and taking the first value
     val lengthsList = mutableListOf<Int>()
@@ -80,4 +83,10 @@ fun displayAsTable(data: List<Password>): String {
     }
     return (stringOut)
 
+}
+fun readFromFile(file: String): String {
+    //this is for reading the key
+    val bufferedReader: BufferedReader = File("src/main/resources/$file").bufferedReader()
+    val inputString = bufferedReader.use { it.readText() }
+    return (inputString)
 }

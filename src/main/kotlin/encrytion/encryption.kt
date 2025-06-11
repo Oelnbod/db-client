@@ -1,5 +1,7 @@
 package encrytion
 
+
+import stringHandling.readFromFile
 import java.security.SecureRandom
 import javax.crypto.*
 import javax.crypto.KeyGenerator
@@ -7,6 +9,9 @@ import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
 import java.util.Base64
 import javax.crypto.spec.SecretKeySpec
+
+//reading key from keyfile
+val secKey: String = readFromFile("key.txt")
 
 fun generateAESKey(keySize: Int = 256): SecretKey {
     val keyGenerator = KeyGenerator.getInstance("AES")
@@ -62,4 +67,4 @@ fun secretKeyToString(secretKey: SecretKey): String {
     return base64EncodedString
 }
 
-const val secKey: String = "+aXfDHPFRCAGXI09mpB8a5Hu7UcmeTVp"
+
