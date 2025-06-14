@@ -90,3 +90,6 @@ fun readFromFile(file: String): String {
     val inputString = bufferedReader.use { it.readText() }
     return (inputString)
 }
+fun writeToFile(file: String, text: String) {
+    File("src/main/resources/$file").writeText(text)
+}
