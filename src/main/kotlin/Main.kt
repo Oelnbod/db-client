@@ -8,8 +8,6 @@ import encrytion.secKey
 import encrytion.secretKeyToString
 import stringHandling.displayAsTable
 import stringHandling.writeToFile
-import java.io.BufferedReader
-import java.io.File
 
 
 fun main() {

@@ -64,7 +64,7 @@ fun displayAsTable(data: List<Password>): String {
                     val shortenedItem = item.take(item.length - 1) //removes final character (a \ is added somewhere)
                     val decryptedData = String(aesDecrypt(shortenedItem, secKey))
                     stringItem = padding(decryptedData, paddingLimit)
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     //also catches column title
                     stringItem = padding(item, paddingLimit)
                 }
