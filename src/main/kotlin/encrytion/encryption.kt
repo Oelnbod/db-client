@@ -3,11 +3,11 @@ package encrytion
 
 import stringHandling.readFromFile
 import java.security.SecureRandom
-import javax.crypto.*
+import java.util.*
+import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
-import java.util.Base64
 import javax.crypto.spec.SecretKeySpec
 
 //reading key from keyfile
